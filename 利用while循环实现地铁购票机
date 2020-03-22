@@ -1,0 +1,28 @@
+package hello;
+
+import java.util.Scanner;
+
+public class Hello {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int balance = 0;
+		while(true)
+		{
+			System.out.print("请投币：");
+			Scanner in = new Scanner(System.in);
+			int amount = in.nextInt();
+			balance = balance + amount;
+			if (balance >= 10)
+			{
+				System.out.println("**************");
+				System.out.println("*Java铁路专线*");
+				System.out.println("*  票价：10元  *");
+				System.out.println("**************");
+				System.out.println("找零：" + (balance-10));
+				balance = 0;
+			}
+		}
+
+	}
+}
