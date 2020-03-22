@@ -1,0 +1,27 @@
+package hello;
+
+import java.util.Scanner;
+
+public class Hello {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print("请输入数字：");
+		Scanner in = new Scanner(System.in);
+		int num = in.nextInt();
+		int count = 1;
+		for(int i=2;i<num;i++)
+		{
+			if(num%i == 0)
+			{
+				count = 0;
+				System.out.print(num+"不是素数");
+				break;
+			}
+		}
+		if(count == 1)
+		{
+			System.out.print(num+"是素数");
+		}
+	}
+}
