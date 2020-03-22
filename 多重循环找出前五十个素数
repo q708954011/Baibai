@@ -9,6 +9,7 @@ public class Hello {
 		System.out.print("前50个素数是：");
 		int count = 0;
 		int num = 1;
+		ONE:
 		for(int i=2;;i++)
 		{
 			num = 1;
@@ -16,15 +17,11 @@ public class Hello {
 			{
 				if(i%j == 0)
 				{
-					num = 0;
-					break;
+					continue ONE;
 				}
 			}
-			if(num == 1)
-			{
-				count++;
-				System.out.print(i+" ");
-			}
+			count++;
+			System.out.print(i+" ");
 			
 			if(count==50)
 			{
