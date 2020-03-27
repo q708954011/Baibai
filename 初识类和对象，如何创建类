@@ -1,0 +1,43 @@
+
+public class VendingMachine {//创建一个类VendingMachine
+//	创建三个属性
+	int price = 80;
+	int balance;
+	int total;
+//	创建四个服务	
+	void showPrompt()
+	{
+		System.out.println("Welcome!");
+	}
+	
+	void insertMoney(int amount)
+	{
+		balance += amount;
+	}
+	
+	void showBalance()
+	{
+		System.out.println(balance);
+	}
+	
+	void getFood()
+	{
+		if(balance >= price)
+		{
+			System.out.println("Here you are.");
+			balance -= price;
+			total += price;
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		VendingMachine v = new VendingMachine();//创建VendingMachine这个类的一个对象v
+		v.showPrompt();//让v为我们做事情
+		v.insertMoney(100);
+		v.showBalance();
+		v.getFood();
+		v.showBalance();
+	}
+
+}
