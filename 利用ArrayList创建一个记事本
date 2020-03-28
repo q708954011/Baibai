@@ -1,0 +1,60 @@
+package notebook;
+
+import java.util.ArrayList;
+
+public class NoteBook {
+	
+	//创建容器ArrayList
+	private ArrayList<String> notes = new ArrayList<String>();
+	
+	//在记事本最后加字符
+	public void add(String s) {
+		notes.add(s);
+	}
+	
+	//在任意位置加字符|若原来位置有字符，则顺序延后
+	public void add(String s,int location)
+	{
+		notes.add(location, s);
+	}
+	
+	//输出记事本字符串数量
+	public int getSize() {
+		return notes.size();
+	}
+	
+	//输出编号位置上的字符串
+	public String getNote(int index) {
+		return notes.get(index);
+	}
+	
+	//删除记事本指定编号处的字符串
+	public void removeNote(int index) {
+		notes.remove(index);
+	}
+	
+	//输出记事本所有的字符串为一个数组
+	public String[] list() {
+		String[] a = new String[notes.size()];
+		notes.toArray(a);//ArrayList的toArray函数
+		return a;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		NoteBook nb = new NoteBook();
+		nb.add("first");
+		nb.add("second");
+		nb.add("third",1);
+		System.out.println(nb.getSize());
+		nb.removeNote(1);
+		System.out.println(nb.getSize());
+		nb.getSize();
+		String[] a = nb.list();
+		for(String i : a)
+		{
+			System.out.println(i);
+		}
+	}
+
+}
