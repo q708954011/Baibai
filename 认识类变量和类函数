@@ -1,0 +1,44 @@
+package clock;
+
+public class Display {
+	private int value = 0;
+	private int limit = 0;
+	private static int a = 6;//类变量，所有对象共有，属于类
+	
+	Display(int limit)
+	{
+		this.limit = limit;
+	}
+	public void increase()
+	{
+		value++;
+		if(value == limit)
+		{
+			value = 0;
+		}
+	}
+	
+	public static void f()
+	{
+//		value++;//这一行不对，不能在类函数中访问非类变量
+		a++;
+	}
+	
+	public int getValue()
+	{
+		return value;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Display d = new Display(24);
+		System.out.println(a);
+//		d.value++;//在main中可以访问private变量，因为main也属于这个类
+//		for(;;)
+//		{
+//			d.increase();
+//			System.out.println(d.getValue());
+//		}
+		f();//可以在一个类函数中调用另一个类函数
+	}
+
+}
