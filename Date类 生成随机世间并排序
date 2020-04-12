@@ -1,0 +1,75 @@
+package date;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Data {
+	public static Date randomDate(int yearStart, int yearEnd) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+		String s1 = String.valueOf(yearStart);
+		String s2 = String.valueOf(yearEnd+1);
+		try {
+			Date start = sdf.parse(s1);
+			Date end = sdf.parse(s2);
+			long l1 = start.getTime();
+			long l2 = end.getTime()-1;
+			long random = (long)(Math.random()*(l2-l1));
+			return new Date(random);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static String toString(Date date) {
+		String ret = "";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		ret = sdf.format(date);
+		return ret;
+	}
+
+	private static String toString(Date date, String string) {
+		String ret = "";
+		SimpleDateFormat sdf = new SimpleDateFormat(string);
+		ret = sdf.format(date);
+		return ret;
+	}
+
+	public static void main(String[] args) throws ParseException {
+		Date[] date = new Date[9];
+		for(int i=0; i<date.length; i++) {
+			date[i] = randomDate(1970, 2000);
+		}
+		System.out.println("得到的随机日期数组:");
+		for(int i=0; i<date.length; i++) {
+			System.out.print(toString(date[i])+"\t");
+			if(i%3 == 2) {
+				System.out.println();
+			}
+		}
+		//选择排序
+		for (int j = 0; j < date.length-1; j++) {
+            for (int i = j+1; i < date.length; i++) {
+                String strTimeI = toString(date[i],"HHmmss");
+                String strTimeJ = toString(date[j],"HHmmss");
+ 
+                int lTimeI = Integer.parseInt(strTimeI);
+                int lTimeJ = Integer.parseInt(strTimeJ);
+ 
+                if( lTimeI<lTimeJ  ){   
+                    Date temp = date[j];
+                    date[j] = date[i];
+                    date[i] = temp;
+                }
+            }
+        }
+		System.out.println("得到的随机日期数组按时间升序排序后:");
+		for(int i=0; i<date.length; i++) {
+			System.out.print(toString(date[i])+"\t");
+			if(i%3 == 2) {
+				System.out.println();
+			}
+		}
+	}
+}
