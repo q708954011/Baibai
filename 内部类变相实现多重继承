@@ -1,0 +1,48 @@
+package test3;
+
+public class Test {
+
+	public static void main(String[] args) {
+		A a = new A();
+		a.testB();
+		a.testC();
+	}
+}
+
+class A{
+	//然后调用内部类覆盖的函数
+	public void testB() {
+		new InnerB().testB();
+	}
+	
+	public void testC() {
+		new InnerC().testC();
+	}
+	
+	//先设置内部类变相多重继承BC两类
+	class InnerB extends B{
+		@Override
+		public void testB() {
+			System.out.println("内部类继承B类");
+		}
+	}
+	
+	class InnerC extends C{
+		@Override
+		public void testC() {
+			System.out.println("内部类继承C类");
+		}
+	}
+}
+
+class B{
+	public void testB() {
+		
+	}
+}
+
+class C{
+	public void testC() {
+		
+	}
+}
