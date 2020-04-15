@@ -1,0 +1,37 @@
+package hello;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+public class Hello {
+	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+	private static String format(Date time) {
+        return sdf.format(time);
+    }
+	
+	public static void main(String[] args) {
+		Calendar c = Calendar.getInstance();
+        Date now = c.getTime();
+        // 当前日期
+        System.out.println("当前日期：\t\t" + format(c.getTime()));
+        
+        c.setTime(now);
+        c.add(Calendar.YEAR, -1);//年份减一
+        c.add(Calendar.MONTH, 1);//月份加一
+        c.add(Calendar.DATE, 3);//日期加三
+        System.out.println("去年下个月的三天后:\t" +format(c.getTime()));
+        
+        c.setTime(now);
+        c.set(Calendar.DATE, 3);
+        System.out.println("设置日期：\t\t" + format(c.getTime()));
+        
+        c.setTime(now);
+        c.add(Calendar.MONTH, 2);
+        c.set(Calendar.DATE, 1);
+        c.add(Calendar.DATE, -3);
+        System.out.println("下个月倒数第三天：\t" +format(c.getTime()));
+    }
+	
+}
