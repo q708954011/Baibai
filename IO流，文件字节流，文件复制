@@ -1,0 +1,30 @@
+package hello;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public class Hello {
+	public static void copyFile(String inPath, String outPath) {
+		try {
+			FileInputStream in = new FileInputStream(inPath);
+			FileOutputStream out = new FileOutputStream(outPath);
+			byte[] b = new byte[100];
+			int len = 0;
+			while((len = in.read(b))!=-1) {
+				out.write(b);
+			}
+			out.flush();
+			
+			out.close();
+			in.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		copyFile("D:/1.txt","D:/桌面/1.jpg");
+	}
+}
